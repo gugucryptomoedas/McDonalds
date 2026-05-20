@@ -1,8 +1,9 @@
 import {
   View, Text, Image, StyleSheet, TouchableOpacity,
   SafeAreaView, StatusBar,
-  SafeAreaViewBase
-} from 'react-native';
+} from "react-native";
+
+import { MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 
 export default function App() {
   return (
@@ -14,16 +15,37 @@ export default function App() {
           <Text>McDonald's</Text>
         </View>
         <View>
-          <Text>Seja Bem-Vindo!</Text>
-          <Text>Escolha como prefere aproveitar sua refeição. Estamos aqui para oferecer praticidade e sabor em cada detalhe!
+          <Text>Seja Bem-Vindo</Text>
+          <Text>Escolha como prefere aproveitar sua refeição. Estamos aqui para
+            oferecer praticidade e sabor em cada detalhe!
           </Text>
+        </View>
+        <View>
+          <TouchableOpacity>
+            <View>
+              <MaterialCommunityIcons
+              name="hamburger"
+              />
+            </View>
+            <View>
+              <Text>Para comer aqui!</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View>
+              <Feather name="shopping-bag"/>
+            </View>
+          </TouchableOpacity>
+          <View>
+            <Text>Para levar!</Text>
+          </View>
         </View>
       </View>
     </SafeAreaView>
   )
 }
 const styles = StyleSheet.create({
-  safeArea: {
+  SafeArea: {
 
   },
   container: {
@@ -36,9 +58,6 @@ const styles = StyleSheet.create({
 
   },
   brandName: {
-
-  },
-  welcomeSection: {
 
   },
   title: {
@@ -62,6 +81,4 @@ const styles = StyleSheet.create({
   cardLabel: {
 
   },
-
-
 });
