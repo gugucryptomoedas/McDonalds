@@ -60,7 +60,7 @@ export default function MenuScreen({ navigation }: Props) {
             >
                 <View style={styles.headerImageWrapper}>
                     <Image
-                        source={require('../images/restaurantes.png')}
+                        source={require('../images/restaurante.png')}
                         style={styles.headerImage}
                         resizeMode="cover"
                     />
@@ -102,7 +102,7 @@ export default function MenuScreen({ navigation }: Props) {
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         contentContainerStyle={styles.categoriesRow}
-                    />
+                    >
                     {categories.map((category) => {
                         const isActive = category === activeCategory;
                         return (
@@ -114,114 +114,202 @@ export default function MenuScreen({ navigation }: Props) {
                                     styles.categoryPill,
                                     isActive && styles.categoryPillActives
                                 ]}
-                                >
-                                    <Text
+                            >
+                                <Text
                                     style={[
                                         styles.categoryText,
                                         isActive && styles.categoryTextActive,
                                     ]}>
  
-                                        {category}
-                                    </Text>
+                                    {category}
+                                </Text>
  
                             </TouchableOpacity>
                         );
                     })}
-                </View>
             </ScrollView>
             <Text style={styles.sectionTitle}>Combos</Text>
-        </View>
+            {combos.map((combo, index) => (
+                <TouchableOpacity
+                    key={combo.id}
+                    style={[
+                        styles.productRow,
+                        index > 0 && styles.productRowDivider
+                    ]}
+                    activeOpacity={0.85}
+                    onPress={() => {
  
+                    }}
+                >
+                    <View style={styles.productInfo}>
+                        <Text style={styles.productName}></Text>
+                        <Text style={styles.productDescription} numberOfLines={2}>
+                            {combo.description}
+                        </Text>
+                        <Text style={styles.productPrice}>{combo.price}</Text>
+                    </View>
+                    <Image
+                        source={combo.image}
+                        style={styles.producImage}
+                        resizeMode="contain"
+                    />
+                </TouchableOpacity>
+            ))}
+        </View>
+    </ScrollView>
+    </View >
     );
 }
  
 const styles = StyleSheet.create({
     container: {
- 
+        flex: 1,
+        backgroundColor: '#F2F2F2'
     },
     scroll: {
- 
+        flex: 1,
     },
     scrollContent: {
- 
+        paddingBottom: 32
     },
     headerImageWrapper: {
- 
+        width: '100%',
+        height: 240,
+        position: 'relative',
+        backgroundColor: '#000'
     },
     headerImage: {
+        width: '100%',
+        height: '100%',
  
     },
     headerButton: {
- 
+        position: 'absolute',
+        top: 48,
+        width: 40,
+        borderRadius: 20,
+        backgroundColor: '#FFFFFF',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // Sombra em IOS e Android
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2},
+        shadowRadius: 4,
+        elevation: 4,
     },
     headerButtonLeft: {
- 
+        left: 16,
     },
     headerButtonRight: {
- 
+        right: 16,
     },
     infoCard: {
- 
+        backgroundColor:'#FFFF',
+        marginTop: -24,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        paddingBottom: 16,
+        minHeight: 600,
     },
     infoTopRow: {
- 
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 12,
     },
     infoLogo: {
- 
+        width: 48,
+        height: 48,
+        borderRadius: 8,
     },
     infoTexts: {
- 
+        flex: 1,
     },
     brandName: {
- 
+        fontSize: 18,
+        color: '#000',
+        fontWeight: '700',
     },
     brandSubtitle: {
- 
+        fontSize: 13,
+        color: '#707070',
+        marginTop: 2,
     },
     statusRow: {
- 
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+        marginTop: 12,
     },
     statusText: {
- 
+        color: '#2BAA3B',
+        fontSize: 13,
+        fontWeight: '600',
     },
     categoriesRow: {
- 
+        flexDirection: 'row',
+        gap: 10,
+        paddingVertical: 18,
+        paddingRight: 12,
     },
     categoryPill: {
- 
+        paddingHorizontal: 18,
+        paddingVertical: 9,
+        borderRadius: 22,
+        backgroundColor: '#F2F2F2'
     },
     categoryPillActives: {
- 
+        backgroundColor: '#FFC72C'
     },
     categoryText: {
- 
+        fontSize: 14,
+        fontWeight: '600',
+        color: '#000'
     },
     categoryTextActive: {
- 
+        color: '#000'
     },
     sectionTitle: {
- 
+        fontSize: 18,
+        fontWeight: '700',
+        color: '#000',
+        marginBottom: 8
     },
     productRow: {
- 
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 14,
+        gap: 12,
     },
     productRowDivider: {
- 
+        borderTopWidth: 1,
+        borderTopColor: '#EEE',
     },
     productInfo: {
- 
+        flex: 1,
     },
     productName: {
- 
+        fontSize: 15,
+        fontWeight: '700',
+        color:'#000',
+        marginBottom: 4
     },
     productDescription: {
- 
+        fontSize: 13,
+        color:'#707070',
+        lineHeight: 18,
+        marginBottom: 8,
     },
     productPrice: {
- 
+        fontSize: 14,
+        fontWeight: '700',
+        color: '#000'
     },
     producImage: {
- 
+        width: 90,
+        height: 70,
     },
 })
+ 
  
