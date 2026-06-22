@@ -14,39 +14,100 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "./HomeScreen";
  
 type Props = NativeStackScreenProps<RootStackParamList, 'Menu'>
+
+type Product = {
+    id: string;
+    name: string;
+    description: string;
+    price: string;
+    image: number;
+}
  
-const combos = [
+const combos: Product[] = [
     {
-        id: '1',
+        id: 'combo-1',
         name: 'McOferta Média Big Mac Duplo',
         description: 'Quatro hambúrgueres (100% carne bovina), alface americana...',
         price: 'R$ 39,90',
         image: require('../images/combo-big-mac-duplo.png'),
     },
     {
-        id: '2',
+        id: 'combo-2',
         name: 'Novo Brabo Melt Onion Rings',
         description: 'Dois hambúrgueres de carne 100% bovina, méquinese, a exclu...',
         price: 'R$ 41,50',
         image: require('../images/combo-brabo-melt-onion-rings.png'),
     },
     {
-        id: '3',
+        id: 'combo-3',
         name: 'MCCrispy Chicken Elite',
         description: 'Composto por pão tipo brioche com batata, molho Honey&Fire, ...',
         price: 'R$ 39,90',
         image: require('../images/combo-mcrispy-elite.png'),
     },
     {
-        id: '4',
+        id: 'combo-4',
         name: 'Duplo Cheddar McMelt',
         description: 'Dois hambúrgueres (100% carne bovina), molho lácteo com quij...',
         price: 'R$ 36,20',
         image: require('../images/combo-duplo-cheddar-mcmelt.png'),
     }
 ];
- 
-const categories = ['combos', 'Lancher', 'Fritas', 'Bebidas'];
+
+const lanches: Product[] = [
+    {
+        id: 'lanche-1',
+        name: 'Big Mac',
+        description: 'Dois hambúrgueres (100% carne bovina), alface americana, queijo...',
+        price: 'R$ 39,90',
+        image: require('../images/lanche-big-mac.png'),
+    },
+    {
+        id: 'lanche-2',
+        name: 'Duplo Quarteirão',
+        description: ' Dois hambúrgueres de carne 100% bovina, méquinese, alface americana, queijo...'
+        price: 'R$ 41,50',
+        image: require('../images/lanche-duplo-quarteirao.png'),
+    },
+    {
+        id: 'lanche-3',
+        name: 'Cheddar McMelt',
+        description: 'Hambúrguer (100% carne bovina), molho lácteo com queijo cheddar, pão tipo brioche...'
+        price: 'R$ 36,20',
+        image: require('../images/lanche-cheddar-mcmelt.png'),
+    },
+    {
+        id: 'lanche-4',
+        name: 'McCrispy Chicken',
+        description: 'Pão tipo brioche com batata, molho Honey&Fire, alface americana, tomate e crispy de frango...'
+        price: 'R$ 36,20',
+        image: require('../images/lanche-mcrispy-chicken.png'),
+    },
+];
+ const fritas: Product[] = [
+    {
+        id: 'fritas-1',
+        name: 'Fritas Grandes',
+        description: 'Batata frita crocante e sequinhas. Vem bastante.',
+        price: 'R$ 12,90',
+        image: require('../images/fritas-grandes.png'),
+    },
+    {
+        id: 'fritas-2',
+        name: 'Fritas Médias',
+        description: 'Batata frita crocante e sequinhas. Vem bastante.',
+        price: 'R$ 9,90',
+        image: require('../images/fritas-medias.png'),
+    },
+    {
+        id: 'fritas-3',
+        name: 'Fritas Pequenas',
+        description: 'Batata frita crocante e sequinhas. Vem bastante.',
+        price: 'R$ 7,90',
+        image: require('../images/fritas-pequenas.png'),
+    },
+];
+const categories = ['combos', 'Lanches', 'Fritas', 'Bebidas'];
  
 export default function MenuScreen({ navigation }: Props) {
     const [activeCategory, setActiveCategory] = useState<string>('Combos');
