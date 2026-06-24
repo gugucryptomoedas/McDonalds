@@ -108,9 +108,26 @@ const lanches: Product[] = [
     },
 ];
 const categories = ['combos', 'Lanches', 'Fritas', 'Bebidas'];
+
+function getProductos(categoriaSelecionada: string): Product[] {
+    switch (categoriaSelecionada) {
+        case 'Combos':
+            return combos;
+        case 'Lanches':
+            return lanches;
+        case 'Fritas':
+            return fritas;  
+        case 'Bebidas':
+            return 'bebidas'; 
+        default:
+            return [];
+    }
+}
  
 export default function MenuScreen({ navigation }: Props) {
-    const [activeCategory, setActiveCategory] = useState<string>('Combos');
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>('Combos');
+
+    const produtosDaCategoria = getProductos(categoriaSelecionada);
     return (
         <View style={styles.container}>
             <StatusBar barStyle={"light-content"} backgroundColor={"#000000"} />
@@ -165,12 +182,12 @@ export default function MenuScreen({ navigation }: Props) {
                         contentContainerStyle={styles.categoriesRow}
                     >
                     {categories.map((category) => {
-                        const isActive = category === activeCategory;
+                        const isActive = category === categoriaSelecionada;
                         return (
                             <TouchableOpacity
                                 key={category}
                                 activeOpacity={0.8}
-                                onPress={() => setActiveCategory(category)}
+                                onPress={() => setCategoriaSelecionada(category)}
                                 style={[
                                     styles.categoryPill,
                                     isActive && styles.categoryPillActives
@@ -189,10 +206,10 @@ export default function MenuScreen({ navigation }: Props) {
                         );
                     })}
             </ScrollView>
-            <Text style={styles.sectionTitle}>Combos</Text>
-            {combos.map((combo, index) => (
+            <Text style={styles.sectionTitle}>{categoriaSelecionada}</Text>
+            {produtosDaCategoria.map((produto, index) => (
                 <TouchableOpacity
-                    key={combo.id}
+                    key={produto.id}
                     style={[
                         styles.productRow,
                         index > 0 && styles.productRowDivider
@@ -310,14 +327,17 @@ const styles = StyleSheet.create({
     },
     categoriesRow: {
         flexDirection: 'row',
+        alignItems: 'center',
         gap: 10,
         paddingVertical: 18,
         paddingRight: 12,
     },
     categoryPill: {
+        height: 36,
         paddingHorizontal: 18,
-        paddingVertical: 9,
-        borderRadius: 22,
+        borderRadius: 18,
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#F2F2F2'
     },
     categoryPillActives: {
