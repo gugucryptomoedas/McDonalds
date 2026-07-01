@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 import {
     View,
     Text,
@@ -14,7 +14,7 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "./HomeScreen";
  
 type Props = NativeStackScreenProps<RootStackParamList, 'Menu'>
-
+ 
 type Product = {
     id: string;
     name: string;
@@ -40,7 +40,7 @@ const combos: Product[] = [
     },
     {
         id: 'combo-3',
-        name: 'MCCrispy Chicken Elite',
+        name: 'McCrispy Chicken Elite',
         description: 'Composto por pão tipo brioche com batata, molho Honey&Fire, ...',
         price: 'R$ 39,90',
         image: require('../images/combo-mcrispy-elite.png'),
@@ -48,86 +48,112 @@ const combos: Product[] = [
     {
         id: 'combo-4',
         name: 'Duplo Cheddar McMelt',
-        description: 'Dois hambúrgueres (100% carne bovina), molho lácteo com quij...',
+        description: 'Dois hambúgueres (100% carne bovina), molho lácteo com queij...',
         price: 'R$ 36,20',
         image: require('../images/combo-duplo-cheddar-mcmelt.png'),
-    }
+    },
 ];
-
+ 
 const lanches: Product[] = [
     {
         id: 'lanche-1',
         name: 'Big Mac',
-        description: 'Dois hambúrgueres (100% carne bovina), alface americana, queijo...',
+        description: 'Quatro hambúrgueres (100% carne bovina), alface americana...',
         price: 'R$ 39,90',
         image: require('../images/lanche-big-mac.png'),
     },
     {
         id: 'lanche-2',
-        name: 'Duplo Quarteirão',
-        description: ' Dois hambúrgueres de carne 100% bovina, méquinese, alface americana, queijo...'
+        name: 'Duplo Quarterão',
+        description: 'Dois hambúrgueres de carne 100% bovina, méquinese, a exclu...',
         price: 'R$ 41,50',
-        image: require('../images/lanche-duplo-quarteirao.png'),
+        image: require('../images/lanche-duplo-quarterao.png')
     },
     {
         id: 'lanche-3',
-        name: 'Cheddar McMelt',
-        description: 'Hambúrguer (100% carne bovina), molho lácteo com queijo cheddar, pão tipo brioche...'
-        price: 'R$ 36,20',
-        image: require('../images/lanche-cheddar-mcmelt.png'),
+        name: 'McMelt',
+        description: 'Composto por pão tipo brioche com batata, molho Honey&Fire, ...',
+        price: 'R$ 39,90',
+        image: require('../images/lanche-mcmelt.png'),
     },
     {
         id: 'lanche-4',
-        name: 'McCrispy Chicken',
-        description: 'Pão tipo brioche com batata, molho Honey&Fire, alface americana, tomate e crispy de frango...'
+        name: 'McNífico Bacon',
+        description: 'Dois hambúrgueres (100% carne bovina), molho lácteo com queij...',
         price: 'R$ 36,20',
-        image: require('../images/lanche-mcrispy-chicken.png'),
+        image: require('../images/lanche-mcnifico-bacon.png')
     },
 ];
- const fritas: Product[] = [
+ 
+const fritas: Product[] = [
     {
         id: 'fritas-1',
-        name: 'Fritas Grandes',
-        description: 'Batata frita crocante e sequinhas. Vem bastante.',
-        price: 'R$ 12,90',
-        image: require('../images/fritas-grandes.png'),
+        name: 'Fritas Grande',
+        description: 'Batatas fritas crocantes e sequinhas. Vem bastante!',
+        price: 'R$ 10,90',
+        image: require('../images/fritas-grande.png'),
     },
     {
         id: 'fritas-2',
-        name: 'Fritas Médias',
-        description: 'Batata frita crocante e sequinhas. Vem bastante.',
+        name: 'Fritas Média',
+        description: 'Batatas fritas crocantes e sequinhas. Vem bastante!',
         price: 'R$ 9,90',
-        image: require('../images/fritas-medias.png'),
+        image: require('../images/fritas-media.png'),
     },
     {
         id: 'fritas-3',
-        name: 'Fritas Pequenas',
-        description: 'Batata frita crocante e sequinhas. Vem bastante.',
-        price: 'R$ 7,90',
-        image: require('../images/fritas-pequenas.png'),
+        name: 'Fritas Pequena',
+        description: 'Batatas fritas crocantes e sequinhas. Vem bastante!',
+        price: 'R$ 5,90',
+        image: require('../images/fritas-pequena.png'),
     },
 ];
-const categories = ['combos', 'Lanches', 'Fritas', 'Bebidas'];
-
-function getProductos(categoriaSelecionada: string): Product[] {
+ 
+const bebidas: Product[] = [
+    {
+        id: 'bebida-1',
+        name: 'Coca-Cola',
+        description: 'Coca-Cola gelada para acompanhar seu lanche.',
+        price: 'R$ 5,90',
+        image: require('../images/coca-cola.png'),
+    },
+    {
+        id: 'bebida-2',
+        name: 'Fanta Laranja',
+        description: 'Fanta Laranja gelada para acompanhar seu lanche.',
+        price: 'R$5,90',
+        image: require('../images/fanta-laranja.png'),
+    },
+    {
+        id: 'bebida-3',
+        name: 'Agua Mineral',
+        description: 'Água mineral sem gás para acompanhar seu lanche.',
+        price: 'R$5,90',
+        image: require('../images/agua.png'),
+    },
+]
+ 
+const categories = ['Combos', 'Lanches', 'Fritas', 'Bebidas'];
+ 
+function getProdutos(categoriaSelecionada: string): Product[] {
     switch (categoriaSelecionada) {
         case 'Combos':
             return combos;
         case 'Lanches':
             return lanches;
         case 'Fritas':
-            return fritas;  
+            return fritas;
         case 'Bebidas':
-            return 'bebidas'; 
+            return bebidas;
         default:
-            return [];
+            return combos;
     }
 }
  
 export default function MenuScreen({ navigation }: Props) {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>('Combos');
-
-    const produtosDaCategoria = getProductos(categoriaSelecionada);
+ 
+    const produtosDaCategoria = getProdutos(categoriaSelecionada);
     return (
         <View style={styles.container}>
             <StatusBar barStyle={"light-content"} backgroundColor={"#000000"} />
@@ -147,15 +173,15 @@ export default function MenuScreen({ navigation }: Props) {
                         activeOpacity={0.8}
                         onPress={() => navigation.goBack}
                     >
-                        <Ionicons name="chevron-back" size={22} color={"#000000"} />
+                        <Ionicons name="chevron-back" size={22} color={'#000000'} />
                     </TouchableOpacity>
+ 
                     <TouchableOpacity
                         style={[styles.headerButton, styles.headerButtonRight]}
                         activeOpacity={0.8}
                         onPress={() => { }}
                     >
                         <Feather name="file-text" size={20} color={'#000000'} />
- 
                     </TouchableOpacity>
                 </View>
                 <View style={styles.infoCard}>
@@ -165,11 +191,11 @@ export default function MenuScreen({ navigation }: Props) {
                             style={styles.infoLogo}
                             resizeMode="contain"
                         />
- 
                         <View style={styles.infoTexts}>
                             <Text style={styles.brandName}>McDonald's</Text>
-                            <Text style={styles.brandSubtitle}>O melhor fast food do mundo</Text>
- 
+                            <Text style={styles.brandSubtitle}>O melhor
+                                fast food do mundo
+                            </Text>
                         </View>
                     </View>
                     <View style={styles.statusRow}>
@@ -181,61 +207,60 @@ export default function MenuScreen({ navigation }: Props) {
                         showsHorizontalScrollIndicator={false}
                         contentContainerStyle={styles.categoriesRow}
                     >
-                    {categories.map((category) => {
-                        const isActive = category === categoriaSelecionada;
-                        return (
-                            <TouchableOpacity
-                                key={category}
-                                activeOpacity={0.8}
-                                onPress={() => setCategoriaSelecionada(category)}
-                                style={[
-                                    styles.categoryPill,
-                                    isActive && styles.categoryPillActives
-                                ]}
-                            >
-                                <Text
+                        {categories.map((category) => {
+                            const isActive = category === categoriaSelecionada;
+                            return (
+                                <TouchableOpacity
+                                    key={category}
+                                    activeOpacity={0.8}
+                                    onPress={() => setCategoriaSelecionada(category)}
                                     style={[
-                                        styles.categoryText,
-                                        isActive && styles.categoryTextActive,
-                                    ]}>
+                                        styles.categoryPill,
+                                        isActive && styles.categoryPillActives
+                                    ]}
+                                >
+                                    <Text
+                                        style={[
+                                            styles.categoryText,
+                                            isActive && styles.categoryTextActive,
+                                        ]}
+                                    >
+                                        {category}
+                                    </Text>
+                                </TouchableOpacity>
+                            );
+                        })}
+                    </ScrollView>
+                    <Text style={styles.sectionTitle}>{categoriaSelecionada}</Text>
+                    {produtosDaCategoria.map((produto, index) => (
+                        <TouchableOpacity
+                            key={produto.id}
+                            style={[
+                                styles.productRow,
+                                index > 0 && styles.productRowDivider,
+                            ]}
+                            activeOpacity={0.85}
+                            onPress={() => {
  
-                                    {category}
+                            }}
+                        >
+                            <View style={styles.productInfo}>
+                                <Text style={styles.productName}>{produto.name}</Text>
+                                <Text style={styles.productDescription} numberOfLines={2}>
+                                    {produto.description}
                                 </Text>
- 
-                            </TouchableOpacity>
-                        );
-                    })}
+                                <Text style={styles.productPrice}>{produto.price}</Text>
+                            </View>
+                            <Image
+                                source={produto.image}
+                                style={styles.productImage}
+                                resizeMode="contain"
+                            />
+                        </TouchableOpacity>
+                    ))}
+                </View>
             </ScrollView>
-            <Text style={styles.sectionTitle}>{categoriaSelecionada}</Text>
-            {produtosDaCategoria.map((produto, index) => (
-                <TouchableOpacity
-                    key={produto.id}
-                    style={[
-                        styles.productRow,
-                        index > 0 && styles.productRowDivider
-                    ]}
-                    activeOpacity={0.85}
-                    onPress={() => {
- 
-                    }}
-                >
-                    <View style={styles.productInfo}>
-                        <Text style={styles.productName}></Text>
-                        <Text style={styles.productDescription} numberOfLines={2}>
-                            {combo.description}
-                        </Text>
-                        <Text style={styles.productPrice}>{combo.price}</Text>
-                    </View>
-                    <Image
-                        source={combo.image}
-                        style={styles.producImage}
-                        resizeMode="contain"
-                    />
-                </TouchableOpacity>
-            ))}
         </View>
-    </ScrollView>
-    </View >
     );
 }
  
@@ -245,7 +270,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F2F2F2'
     },
     scroll: {
-        flex: 1,
+        flex: 1
     },
     scrollContent: {
         paddingBottom: 32
@@ -254,24 +279,25 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 240,
         position: 'relative',
-        backgroundColor: '#000'
+        backgroundColor: '#000',
     },
     headerImage: {
         width: '100%',
         height: '100%',
- 
     },
     headerButton: {
         position: 'absolute',
         top: 48,
         width: 40,
+        height: 40,
         borderRadius: 20,
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
         justifyContent: 'center',
-        // Sombra em IOS e Android
+        // Sombra em iOS e Android
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2},
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.15,
         shadowRadius: 4,
         elevation: 4,
     },
@@ -282,7 +308,7 @@ const styles = StyleSheet.create({
         right: 16,
     },
     infoCard: {
-        backgroundColor:'#FFFF',
+        backgroundColor: '#FFFFFF',
         marginTop: -24,
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
@@ -306,7 +332,7 @@ const styles = StyleSheet.create({
     },
     brandName: {
         fontSize: 18,
-        color: '#000',
+        color: '#000000',
         fontWeight: '700',
     },
     brandSubtitle: {
@@ -336,9 +362,9 @@ const styles = StyleSheet.create({
         height: 36,
         paddingHorizontal: 18,
         borderRadius: 18,
+        backgroundColor: '#F2F2F2',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F2F2F2'
     },
     categoryPillActives: {
         backgroundColor: '#FFC72C'
@@ -346,16 +372,16 @@ const styles = StyleSheet.create({
     categoryText: {
         fontSize: 14,
         fontWeight: '600',
-        color: '#000'
+        color: '#000000'
     },
     categoryTextActive: {
-        color: '#000'
+        color: '#000000'
     },
     sectionTitle: {
         fontSize: 18,
         fontWeight: '700',
-        color: '#000',
-        marginBottom: 8
+        color: '#000000',
+        marginBottom: 8,
     },
     productRow: {
         flexDirection: 'row',
@@ -365,7 +391,7 @@ const styles = StyleSheet.create({
     },
     productRowDivider: {
         borderTopWidth: 1,
-        borderTopColor: '#EEE',
+        borderTopColor: '#EEEEEE',
     },
     productInfo: {
         flex: 1,
@@ -373,24 +399,25 @@ const styles = StyleSheet.create({
     productName: {
         fontSize: 15,
         fontWeight: '700',
-        color:'#000',
+        color: '#000000',
         marginBottom: 4
     },
     productDescription: {
         fontSize: 13,
-        color:'#707070',
+        color: '#707070',
         lineHeight: 18,
         marginBottom: 8,
     },
     productPrice: {
         fontSize: 14,
         fontWeight: '700',
-        color: '#000'
+        color: '#000000',
     },
-    producImage: {
+    productImage: {
         width: 90,
         height: 70,
     },
 })
+ 
  
  
