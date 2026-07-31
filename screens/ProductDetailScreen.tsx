@@ -76,11 +76,8 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
                 <Text style={styles.productName}>{produto.name}</Text>
 
                 <View style={styles.priceRow}>
-
                     <Text style={styles.price}>{produto.price}</Text>
-
                     <View style={styles.quantitySelector}>
-
                         <TouchableOpacity
                             style={styles.quantityButtonMinus}
                             activeOpacity={0.8}
@@ -88,8 +85,7 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
                                 if (quantidade > 1) {
                                     setQuantidade(quantidade - 1);
                                 }
-                            }}
-                        >
+                            }}>
                             <Ionicons name="chevron-back" size={18} color="#000000" />
                         </TouchableOpacity>
 
@@ -101,31 +97,48 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
                             onPress={() => setQuantidade(quantidade + 1)}
                         >
                             <Ionicons name="chevron-forward" size={18} color="#FFFFFF" />
+
                         </TouchableOpacity>
                     </View>
                 </View>
-                {/* SEÇÃO SOBRE */}
+                {/* SESSÃO SOBRE */}
                 <Text style={styles.sectionTitle}>Sobre</Text>
-                <Text style={styles.aboutText}>{produto.about}</Text>
+                <Text style={styles.sectionTitle}>{produto.about}</Text>
 
                 {/* SEÇÃO INGREDIENTES */}
-                <View style={styles.ingredientsHeader}>
-                    <MaterialCommunityIcons name="chef-hat"
-                        size={20}
-                        color="#000000"
-                    />
-                    <Text style={styles.sectionTitle}>Ingredientes</Text>
-                    </View>
-                    {/* Metodo MAP */}
-                    {produto.ingredients.map((ingredient, index) => 
+                <View style={styles.ingredientsHeader}></View>
+                <MaterialCommunityIcons
+                    name="chef-hat"
+                    size={20}
+                    color="#000000"
+                />
+                <Text style={styles.sectionTitle}>Ingredientes</Text>
+
+                {/* Metodo MAP */}
+                {produto.ingredients.map((ingrediente, index) => (
                     <View key={index} style={styles.ingredientRow}>
                         <Text style={styles.bullet}>•</Text>
-                        <Text style={styles.ingredientText}>{ingredient}</Text>
+                        <Text style={styles.ingredientText}>{ingrediente}</Text>
                     </View>
-                    )}
+                ))}
                 <View style={styles.bottomSpacer} />
-
             </ScrollView>
+            {/* BOTÂO ADICIONAR SACOLA */}
+            <View
+                style={[
+                    styles.footer,
+                    { paddingBottom: Math.max(insets.bottom - 8, 4) }
+                ]}
+            >
+                <TouchableOpacity
+                    style={styles.addButton}
+                    activeOpacity={0.85}
+                    onPress={() => { }}
+                >
+                    <Text style={styles.addButtonText}>Adicionar à sacola</Text>
+                </TouchableOpacity>
+
+            </View>
         </View>
     )
 }
@@ -190,4 +203,5 @@ const styles = StyleSheet.create({
     backLink: {
     },
 });
+
 
